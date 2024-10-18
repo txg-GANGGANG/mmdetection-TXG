@@ -9,6 +9,8 @@ import tifffile as tiff
 import json
 import time
 import logging
+from D3_T import Height
+from Picture_T import Picture
 
 sum=0
 DLdir = r'./dlconfig'
@@ -31,8 +33,6 @@ logging.basicConfig(level=logging.INFO,
                     filename=img_path + '\\{}\\{}.txt'.format(time.strftime("%Y-%m-%d"), time.strftime("%Y-%m-%d")),
                     filemode='a')
 
-from D3_T import Height
-from Picture_T import Picture
 
 config_file = r'D:\testAI\mmdetection-master\mask_rcnn_r101_fpn_1x_coco.py'
 # checkpoint_file = r'D:\testAI\kfw\biandang\epoch_500.pth'
