@@ -38,36 +38,38 @@ config_file = r'model_file\rtmdet-ins_tiny_8xb32-300e_coco.py'
 
 model = init_detector(config_file, checkpoint_file, device='cpu')
 def inf(image):
+    stock_retrigger = [[0,0,0,0],[0]]
+    origin_shape = (image.shape[0], image.shape[1])  
+
     if image.shape[2] ==1:
         image = cv2.cvtColor(image.astype('uint8'), cv2.COLOR_GRAY2RGB)
     result_detected = inference_detector(model, image)
-    # print('result_detected',result_detected)
-    bbox_result, segm_result = result_detected
-    print('bbox_result',bbox_result)
-    print('segm_result',segm_result)
     
+    # print('result_detected',result_detected)
     resule_dict = result_detected.pred_instances.to_dict()
-    bboxes = resule_dict['bboxes']
-    scores = resule_dict['scores']
-    labels = resule_dict['labels']
-    print(type(labels))
-    i = 0
-    for score in scores:
-        result_0 = []
-        result_1 = []
-        if score > 0.8:
-            result_0.append(bboxes[i])
-            result_1.append(labels[i])
-            i += 1
+    bboxes = resule_dict['bboxes'].tolist()
+    scores = resule_dict['scores'].tolist()
+    labels = resule_dict['labels'].tolist()
+    list_i = []
+    for i in range(len(labels)):
+        if scores[i] > 0.65:
+            list_i.append(i)
         else:
             continue
-        print('result_0',result_0)
-        print('result_1',result_1)
+        i += 1
+    # print(list_i)
+    bbox_label = []
+    for j in range(len(list_i)):
+        bbox_label.append([bboxes[j],labels[j]])
+    print(bbox_label)
+    if len(bbox_label) == 0:
+        print('no can det')
+        return stock_retrigger
+    colors = [num *10 +10 for num in range(len(bbox_label))]
+    
 
-    # print('result_list',result_list)
-    # print('bboxes',bboxes['bboxes'])
-    # bboxes = np.vstack(bbox_result)
-    print('bboxes',bboxes)
+
+    # bbox_label = [[x1,x2,y1,y2], label]
     # return result_detected
 
 def test():
