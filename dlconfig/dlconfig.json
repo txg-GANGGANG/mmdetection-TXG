@@ -1,4 +1,4 @@
-{"checkpoint_file": "D:\\testAI\\mmdetection-TXG\\epoch_3000.pth",
+{"checkpoint_file": "D:\\testAI\\mmdetection-TXG\\model_file\\epoch_2000.pth",
  "issave_img": true,
  "img_path":"D:\\testAI\\mmdetection-TXG\\image_test"
  }

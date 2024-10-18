@@ -14,11 +14,11 @@ if os.path.exists(os.path.join(DLdir, 'dlconfig.json')):
         dictout = json.load(f)
         img_path = dictout['img_path']
         f.close()
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s %(filename)s %(levelname)s %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S',
-                    filename=img_path + '\\{}\\{}.txt'.format(time.strftime("%Y-%m-%d"), time.strftime("%Y-%m-%d")),
-                    filemode='a')
+# logging.basicConfig(level=logging.INFO,
+#                     format='%(asctime)s %(filename)s %(levelname)s %(message)s',
+#                     datefmt='%Y-%m-%d %H:%M:%S',
+#                     filename=img_path + '\\{}\\{}.txt'.format(time.strftime("%Y-%m-%d"), time.strftime("%Y-%m-%d")),
+#                     filemode='a')
 
 
 # global image_h
