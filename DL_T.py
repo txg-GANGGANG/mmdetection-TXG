@@ -69,6 +69,7 @@ def inf(image):
     print(colors)
 
 
+
     # bbox_label = [[x1,x2,y1,y2], label]
     # return result_detected
 
