@@ -66,7 +66,7 @@ def inf(image):
         print('no can det')
         return stock_retrigger
     colors = [num *10 +10 for num in range(len(bbox_label))]
-    
+    print(colors)
 
 
     # bbox_label = [[x1,x2,y1,y2], label]
